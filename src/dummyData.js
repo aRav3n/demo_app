@@ -12,7 +12,7 @@ function generateTrackPointObject(militaryTime, tempC = null) {
   object.date = date;
 
   if (!tempC) {
-    const newTemp = 18 + Math.random;
+    const newTemp = Math.round((18 + Math.random()) * 100) / 100;
     tempC = newTemp;
   }
   object.temperature = tempC;
@@ -72,7 +72,7 @@ function makeTrackerInfo() {
 
 export default function getJsonTrackerData() {
   const trackerArray = makeTrackerInfo();
-  
+
   const jsonData = JSON.stringify(trackerArray);
 
   return jsonData;

@@ -5,6 +5,7 @@ import dummyData from "./dummyData";
 function App() {
   const trackerArray = JSON.parse(dummyData());
   const [selectedTracker, setSelectedTracker] = useState(trackerArray[0]);
+  const [dataPointsDisplayed, setDataPointsDisplayed] = useState(false);
 
   const handleTrackerChange = (e) => {
     for (let i = 0; i < trackerArray.length; i++) {
@@ -14,6 +15,11 @@ function App() {
         return;
       }
     }
+  };
+
+  const handleDataPointDisplayToggle = (e) => {
+    const newValue = !dataPointsDisplayed;
+    setDataPointsDisplayed(newValue);
   };
 
   return (
@@ -30,6 +36,9 @@ function App() {
           })}
         </select>
       </nav>
+      <main>
+        <div><button id="graphToggle" type="button" onClick={handleDataPointDisplayToggle}>Toggle graph display</button></div>
+      </main>
     </>
   );
 }

@@ -7,7 +7,7 @@ import Chart from "./TempData";
 function App() {
   const trackerArray = JSON.parse(dummyData());
   const [selectedTracker, setSelectedTracker] = useState(trackerArray[0]);
-  const [dataPointsDisplayed, setDataPointsDisplayed] = useState(false);
+  const [chartDisplayed, setChartDisplayed] = useState(false);
   const [graphDisplayed, setGraphDisplayed] = useState(false);
 
   const handleTrackerChange = (e) => {
@@ -21,13 +21,16 @@ function App() {
 
   const handleDataPointDisplayToggle = (e) => {
     const newValue = e.target.checked;
-    setDataPointsDisplayed(newValue);
+    setChartDisplayed(newValue);
   };
 
   const handleGraphDisplayToggle = (e) => {
     const newValue = e.target.checked;
     setGraphDisplayed(newValue);
   };
+
+  let graphToggleString = graphDisplayed ? "Hide graph" : "Show graph";
+  let chartToggleString = chartDisplayed ? "Hide chart" : "Show chart";
 
   return (
     <>
@@ -54,7 +57,7 @@ function App() {
                 onChange={handleGraphDisplayToggle}
               />
               <div className="toggleSwitch"></div>
-              <span>Toggle graph display</span>
+              <span>{graphToggleString}</span>
             </label>
           </div>
           <div className="toggleContainer">
@@ -66,7 +69,7 @@ function App() {
                 onChange={handleDataPointDisplayToggle}
               />
               <div className="toggleSwitch"></div>
-              <span>Toggle data display</span>
+              <span>{chartToggleString}</span>
             </label>
           </div>
         </div>
@@ -76,7 +79,7 @@ function App() {
         ></Graph>
         <Chart
           tracker={selectedTracker}
-          dataPointsDisplayed={dataPointsDisplayed}
+          chartDisplayed={chartDisplayed}
         ></Chart>
       </main>
       <footer>Copyright &copy; Andrew Ryan 2024</footer>

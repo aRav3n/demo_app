@@ -29,9 +29,9 @@ function getTimeString(oldDateString) {
   return formattedTime;
 }
 
-export default function DataDisplay({ tracker, dataPointsDisplayed }) {
+export default function DataDisplay({ tracker, chartDisplayed }) {
   const data = tracker.points;
-  if (dataPointsDisplayed) {
+  if (chartDisplayed) {
     return (
       <div className="chart">
         <div>
@@ -60,5 +60,5 @@ export default function DataDisplay({ tracker, dataPointsDisplayed }) {
 
 DataDisplay.propTypes = {
   tracker: PropTypes.object.isRequired,
-  dataPointsDisplayed: PropTypes.bool.isRequired,
+  chartDisplayed: PropTypes.bool.isRequired,
 };

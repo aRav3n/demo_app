@@ -35,6 +35,7 @@ function App() {
   return (
     <>
       <nav>
+        Select a tracker:
         <select onChange={handleTrackerChange} value={selectedTracker.name}>
           <option value="">-- Select a tracker --</option>
           {trackerArray.map((tracker) => {
